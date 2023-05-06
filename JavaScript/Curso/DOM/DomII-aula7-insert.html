@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio ao DOM</title>
+    <style>
+      .container2 {
+        background: #ccc;
+        padding: 15px;
+      }
+      .container2 p {
+        border: 1px solid red;
+        padding: 10px;
+        margin: 15px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container2">
+      <p>
+        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Provident,
+        sequi magni! Eveniet earum maiores fuga esse autem architecto, optio
+        soluta, voluptates corrupti vero doloremque repudiandae ad repellat
+        debitis minima incidunt?
+      </p>
+      <p>
+        Assumenda iste a, expedita possimus facere laudantium numquam aliquid
+        minima, molestiae officia quaerat quas nesciunt saepe, ipsam voluptates
+        asperiores consequatur molestias? Molestiae ipsa, praesentium voluptates
+        voluptas nihil ad impedit aut!
+      </p>
+      <p>
+        Saepe voluptatum tempore et, debitis doloribus est tempora quod
+        repudiandae eveniet praesentium omnis cum amet quibusdam blanditiis, aut
+        laborum perferendis natus numquam. Deleniti voluptatum aut nulla
+        delectus totam porro commodi.
+      </p>
+    </div>
+    <div id="myDiv">
+      <p>Primeiro parágrafo</p>
+      <p>Segundo parágrafo</p>
+      <ul>
+        <li>Item 1</li>
+        <li>
+          Item 2
+          <ul>
+            <li>Item 2.1</li>
+            <li>Item 2.2</li>
+            <li>Item 2.3</li>
+          </ul>
+        </li>
+        <li>Item 3</li>
+      </ul>
+      <p>Terceiro parágrafo</p>
+    </div>
+    <script>
+      const myDiv = document.getElementById("myDiv");
+      const title = document.createElement("h1");
+      const parentDiv = myDiv.children[0];
+
+      title.setAttribute("id", "idDinamico");
+      title.setAttribute("style", "background-color: yellow"); // Melhor forma de adicionar atributos no HTML via javascript
+      title.textContent = "texto inserido com text content"; // Melhor forma de introduzir texto no HTML via js
+
+      myDiv.insertBefore(title, parentDiv);
+
+      const segundoParagrafo = myDiv.firstElementChild.nextElementSibling;
+      console.log(segundoParagrafo);
+
+      console.log(title);
+
+      const container2 = document.querySelector(".container2");
+
+      container2.insertAdjacentHTML(
+        "beforebegin",
+        "<p> Texto inserido com insert 1</p>"
+      );
+      container2.insertAdjacentHTML(
+        "afterbegin",
+        "<p> Texto inserido com insert 2</p>"
+      );
+      container2.insertAdjacentHTML(
+        "beforeend",
+        "<p> Texto inserido com insert 3</p>"
+      );
+      container2.insertAdjacentHTML(
+        "afterend",
+        "<p> Texto inserido com insert 4</p>"
+      );
+      container2.insertAdjacentText(
+        "beforebegin",
+        "Texto inserido com insert 5"
+      );
+      container2.insertAdjacentText(
+        "afterbegin",
+        "Texto inserido com insert 6"
+      );
+      container2.insertAdjacentText("beforeend", "Texto inserido com insert 7");
+      container2.insertAdjacentText("afterend", "Texto inserido com insert 8");
+
+      const em = document.createElement("em");
+      em.textContent = " texto criado com enfase e inserido com isert";
+      container2.insertAdjacentElement("beforebegin", em);
+    </script>
+  </body>
+</html>

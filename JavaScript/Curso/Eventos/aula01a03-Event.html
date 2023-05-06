@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Eventos</h1>
+    <div id="container">
+      <button id="btn1">Click 1</button>
+      <button id="btn2" onclick="clicou2()">Click 2</button>
+      <button id="btn3">Click 3</button>
+    </div>
+    <hr />
+
+    <script>
+      const btn1 = document.getElementById("btn1");
+      const btn2 = document.getElementById("btn2");
+      const btn3 = document.getElementById("btn3");
+
+      function clicou() {
+        console.log("Chamando uma função no btn1 pelo eventListener");
+      }
+      btn1.addEventListener("click", clicou, false);
+
+      function clicou2() {
+        console.log("Chamando uma função no btn2 pelo onclick");
+      }
+      btn2.onclick = clicou2;
+
+      btn3.addEventListener(
+        "click",
+        (evt) => {
+          console.log(evt);
+          evt.stopPropagation();
+          console.log("função anonima usando arrow function");
+        },
+        false
+      );
+      const container = document.getElementById("container");
+      container.addEventListener("click", () => {
+        console.log("clicou no container");
+      });
+    </script>
+  </body>
+</html>

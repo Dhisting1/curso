@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .container2 {
+        background-color: red;
+        padding: 20px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Eventos</h1>
+    <div id="container">
+      <button id="btn1">Click 1</button>
+      <button id="btn2" onclick="clicou2()">Click 2</button>
+      <button id="btn3">Click 3</button>
+    </div>
+    <hr />
+
+    <h1>Delegação de eventos</h1>
+
+    <div class="container2">
+      <button>Botao 1</button>
+      <button>Botao 2</button>
+      <button>Botao 3</button>
+    </div>
+
+    <script>
+      const btn1 = document.getElementById("btn1");
+      const btn2 = document.getElementById("btn2");
+      const btn3 = document.getElementById("btn3");
+
+      function clicou() {
+        console.log("Chamando uma função no btn1 pelo eventListener");
+      }
+      btn1.addEventListener("click", clicou, false);
+
+      function clicou2() {
+        console.log("Chamando uma função no btn2 pelo onclick");
+      }
+      btn2.onclick = clicou2;
+
+      btn3.addEventListener(
+        "click",
+        (evt) => {
+          console.log(evt);
+          //   evt.stopPropagation();
+          console.log("função anonima usando arrow function");
+        },
+        true
+      );
+      const container = document.getElementById("container");
+      container.addEventListener("click", () => {
+        console.log("clicou no container");
+      });
+
+      console.log("------------------------------------------------------");
+
+      document.addEventListener("click", (e) => {
+        console.log("clicou no document");
+        console.log(e.target);
+        console.log(e.currentTarget);
+        console.log(this);
+      });
+
+      document.addEventListener("click", function (e) {
+        console.log("clicou no document");
+        console.log(e.target);
+        console.log(e.currentTarget);
+        console.log(this);
+      });
+
+      const container2 = document.querySelector(".container2");
+      const btns = document.querySelectorAll(".container2 button");
+      console.log(btns);
+
+      container2.addEventListener("click", (e) => {
+        // e.stopPropagation();
+        console.log(e.target);
+        console.log(e.currentTarget);
+        console.log(this);
+        if (e.target.nodeName === "BUTTON") {
+          console.log(e.target);
+        }
+      });
+    </script>
+  </body>
+</html>
