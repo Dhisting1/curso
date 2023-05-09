@@ -109,7 +109,9 @@ textarea {
   color: #652f2f;
   cursor: pointer;
 }
-
+#feedbackMessage button:focus{
+  border: 1px solid #fefefe;
+}
 #feedbackMessage.show {
   transform: translateY(0px);
 }
