@@ -10,8 +10,8 @@
   function addTask(task) {
     const li = document.createElement("li");
     const p = document.createElement("p");
-    li.className = "todo-item";
-    p.className = "task-name";
+    li.classList.add("todo-item");
+    p.classList.add("task-name");
     p.textContent = task;
     li.appendChild(p);
     ul.appendChild(li);
@@ -28,9 +28,13 @@
     itemInput.focus();
   });
 
-  [...lis].forEach((element) => {
-    element.addEventListener("click", function (evt) {
-      console.log(this);
-    });
+  ul.addEventListener("click", function (evt) {
+    if (evt.target.classList.contains("todo-item")) {
+      console.log(evt.target);
+      console.log(this.textContent);
+      console.log(this.innerText);
+      console.log(this.innerHTML);
+      console.log(this.outerHTML);
+    }
   });
 })();
