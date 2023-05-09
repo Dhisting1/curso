@@ -18,6 +18,10 @@
 
     li.addEventListener("click", function () {
       console.log(this);
+      console.log(this.textContent);
+      console.log(this.innerText);
+      console.log(this.innerHTML);
+      console.log(this.outerHTML);
     });
   }
 
@@ -31,10 +35,6 @@
   ul.addEventListener("click", function (evt) {
     if (evt.target.classList.contains("todo-item")) {
       console.log(evt.target);
-      console.log(this.textContent);
-      console.log(this.innerText);
-      console.log(this.innerHTML);
-      console.log(this.outerHTML);
     }
   });
 })();
